@@ -2,9 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import makeRequest from "./makeRequest";
 import { getAdminToken } from "../utils/usersUtils/adminInfo";
 
-const adminHeader = {
+const getAdminHeader = () => ({
     "x-admin-token": `Bearer ${getAdminToken()}`,
-};
+});
 
 export const fetchUserByAlias = createAsyncThunk(
     "admin/fetchUserByAlias",
@@ -14,7 +14,7 @@ export const fetchUserByAlias = createAsyncThunk(
             "post",
             thunkApi,
             { username: alias },
-            adminHeader
+            getAdminHeader()
         )
 );
 
@@ -26,7 +26,7 @@ export const fetchQuestionsForAdmin = createAsyncThunk(
             "get",
             thunkApi,
             null,
-            adminHeader
+            getAdminHeader()
         )
 );
 
@@ -38,6 +38,6 @@ export const createQuestion = createAsyncThunk(
             "post",
             thunkApi,
             question,
-            adminHeader
+            getAdminHeader()
         )
 );

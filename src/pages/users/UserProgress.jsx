@@ -61,6 +61,7 @@ export default function UserProgress() {
                 customRightButton={backButton("transparent")}
                 title={"User Progress"}
                 shouldShowDate={false}
+                disablePersonaClick={true}
             />
             <SearchBar {...searchBarProps} />
             <Topics topics={topics} customTopicClickAction={onTopicClick} />
