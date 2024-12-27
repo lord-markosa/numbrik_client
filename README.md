@@ -1,4 +1,4 @@
-# Numbrik Client
+# Welcome to Numbrik's Client Repository
 
 Welcome to the Mathematics Quiz App repository. This project is a client-side application designed to provide users with high-quality mathematics problems for practice and assessment.
 
