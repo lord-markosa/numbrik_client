@@ -1,0 +1,49 @@
+@import "../constants/styleConstants.scss";
+
+.toggle-slider {
+    position: relative;
+    margin: 8px 16px 4px;
+    border: 1px solid $grey-100;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 28px;
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    z-index: 1;
+
+    .tab {
+        flex: 1;
+        text-align: center;
+        padding: 6px 0;
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.3s;
+
+        &.active {
+            color: white;
+        }
+    }
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-color: $theme-color; // Highlight color
+    border-radius: 20px;
+    transition: transform 0.3s;
+
+    &.left {
+        transform: translateX(0);
+    }
+
+    &.right {
+        transform: translateX(100%);
+    }
+}

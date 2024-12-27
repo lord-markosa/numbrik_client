@@ -1,0 +1,35 @@
+@import "../../constants/styleConstants.scss";
+
+.top-header {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    margin: 0 4px 12px;
+
+    .persona {
+        flex: 1;
+    }
+
+    .title {
+        font-weight: 600;
+        flex: 1;
+        text-align: center;
+    }
+
+    .right-section {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+
+        .diamonds {
+            color: white;
+            background-color: $theme-color;
+            padding: 4px 8px;
+            border-radius: 12px;
+            .diamond-icon {
+                margin-right: 4px;
+            }
+            @include centered;
+        }
+    }
+}

@@ -1,0 +1,302 @@
+[
+    {
+        "name": "Rational, Irrational, Real, Imaginary Numbers",
+        "description": "Understanding different types of numbers including rational, irrational, real, and imaginary numbers; their properties and operations.",
+        "id": "MT100",
+        "symbol": "5+√2i"
+    },
+    {
+        "name": "Prime Numbers and Factorization",
+        "description": "Exploring prime numbers, composite numbers, prime factorization, and their applications.",
+        "id": "MT110",
+        "symbol": "n=∏pᵉ"
+    },
+    {
+        "name": "Greatest Common Divisor and Least Common Multiple",
+        "description": "Calculating the greatest common divisor (GCD) and least common multiple (LCM) of integers; applications in solving problems.",
+        "id": "MT120",
+        "symbol": "p=qd+r"
+    },
+    {
+        "name": "Ratio and Proportions",
+        "description": "Understanding ratios, proportions, and their applications in solving real-world problems.",
+        "id": "MT200",
+        "symbol": "a:b::c:d"
+    },
+    {
+        "name": "Simple and Compound Interest",
+        "description": "Calculating simple and compound interest; understanding concepts of principal, rate, and time.",
+        "id": "MT210",
+        "symbol": "(1+r/n)ᵗ"
+    },
+    {
+        "name": "Exponents and Powers",
+        "description": "Working with exponents and powers; laws of exponents; scientific notation.",
+        "id": "MT220",
+        "symbol": "aᵐ·aⁿ"
+    },
+    {
+        "name": "Expressions and Equations",
+        "description": "Understanding algebraic expressions, equations, and their manipulation.",
+        "id": "MT300",
+        "symbol": "axy+b"
+    },
+    {
+        "name": "Linear Equations",
+        "description": "Solving linear equations in one or more variables.",
+        "id": "MT310",
+        "symbol": "y=mx+c"
+    },
+    {
+        "name": "Quadratic Equations",
+        "description": "Solving quadratic equations using various methods; discriminant; nature of roots.",
+        "id": "MT320",
+        "symbol": "ax²+1"
+    },
+    {
+        "name": "Polynomials",
+        "description": "Understanding polynomials; operations on polynomials; factorization.",
+        "id": "MT330",
+        "symbol": "∑aₙxⁿ"
+    },
+    {
+        "name": "Remainder and Factor Theorems",
+        "description": "Applying the Remainder and Factor Theorems in polynomial division and factorization.",
+        "id": "MT340",
+        "symbol": "P(a)=0"
+    },
+    {
+        "name": "Inequalities",
+        "description": "Solving and graphing linear and quadratic inequalities.",
+        "id": "MT350",
+        "symbol": "AM>GM"
+    },
+    {
+        "name": "Lines and Angles",
+        "description": "Fundamentals of lines and angles; types of angles; properties of parallel lines.",
+        "id": "MT400",
+        "symbol": "∠A,∥,⊥"
+    },
+    {
+        "name": "Triangles",
+        "description": "Properties of triangles; congruence and similarity; Pythagoras theorem.",
+        "id": "MT410",
+        "symbol": "ΔABC"
+    },
+    {
+        "name": "Quadrilaterals",
+        "description": "Different types of quadrilaterals; their properties and theorems.",
+        "id": "MT420",
+        "symbol": "□ABCD"
+    },
+    {
+        "name": "Circles",
+        "description": "Properties of circles; chords, tangents, arcs, and angles.",
+        "id": "MT430",
+        "symbol": "⊙"
+    },
+    {
+        "name": "Area and Volume",
+        "description": "Calculating the area and volume of various geometrical shapes and solids.",
+        "id": "MT500",
+        "symbol": "V=πr²h"
+    },
+    {
+        "name": "Surface Area",
+        "description": "Calculating the surface area of three-dimensional objects.",
+        "id": "MT510",
+        "symbol": "2πrh"
+    },
+    {
+        "name": "Heron's Formula",
+        "description": "Using Heron's formula to find the area of a triangle when sides are known.",
+        "id": "MT520",
+        "symbol": "√s(s-a)"
+    },
+    {
+        "name": "Trigonometric Ratios",
+        "description": "Defining sine, cosine, tangent, and other trigonometric ratios; right-angled triangles.",
+        "id": "MT600",
+        "symbol": "sinθ"
+    },
+    {
+        "name": "Trigonometric Identities",
+        "description": "Understanding and applying fundamental trigonometric identities.",
+        "id": "MT610",
+        "symbol": "sin2θ"
+    },
+    {
+        "name": "Solving Trigonometric Equations",
+        "description": "Solving equations involving trigonometric functions.",
+        "id": "MT620",
+        "symbol": "sinx=k"
+    },
+    {
+        "name": "Applications of Trigonometry",
+        "description": "Using trigonometry in real-world applications like heights and distances.",
+        "id": "MT630",
+        "symbol": "Δx,y,θ"
+    },
+    {
+        "name": "Straight Lines",
+        "description": "Equation of straight lines; slope; intercepts; distance between points.",
+        "id": "MT700",
+        "symbol": "y=mx+c"
+    },
+    {
+        "name": "Conic Sections",
+        "description": "Studying conic sections: circle, parabola, ellipse, and hyperbola.",
+        "id": "MT710",
+        "symbol": "x²+y²"
+    },
+    {
+        "name": "Arithmetic Sequences",
+        "description": "Understanding arithmetic sequences and series; finding sums.",
+        "id": "MT800",
+        "symbol": "∑aₙ"
+    },
+    {
+        "name": "Geometric Sequences",
+        "description": "Understanding geometric sequences and series; finding sums.",
+        "id": "MT810",
+        "symbol": "a₁·rⁿ⁻¹"
+    },
+    {
+        "name": "Infinite Series",
+        "description": "Exploring infinite series; convergence and divergence.",
+        "id": "MT820",
+        "symbol": "a₁/(1-r)"
+    },
+    {
+        "name": "Counting Principles",
+        "description": "Fundamental counting principle; permutations and combinations.",
+        "id": "MT900",
+        "symbol": "nPr/r!"
+    },
+    {
+        "name": "Binomial Theorem",
+        "description": "Expanding expressions using binomial theorem; applications.",
+        "id": "MT910",
+        "symbol": "(a+b)ⁿ"
+    },
+    {
+        "name": "Matrices",
+        "description": "Understanding matrices; operations; types of matrices.",
+        "id": "MT1000",
+        "symbol": "[A][B]"
+    },
+    {
+        "name": "Determinants",
+        "description": "Calculating determinants; properties; applications in solving equations.",
+        "id": "MT1010",
+        "symbol": "|A|x=0"
+    },
+    {
+        "name": "Vector Algebra",
+        "description": "Understanding vectors; operations like addition, scalar multiplication.",
+        "id": "MT1100",
+        "symbol": "𝐯,𝐮"
+    },
+    {
+        "name": "Dot and Cross Product",
+        "description": "Calculating dot product and cross product of vectors; applications.",
+        "id": "MT1110",
+        "symbol": "𝐮×𝐯"
+    },
+    {
+        "name": "Applications of Vectors",
+        "description": "Using vectors in physics and geometry; applications in problems.",
+        "id": "MT1120",
+        "symbol": "𝐅=m𝐚"
+    },
+    {
+        "name": "3D Geometry",
+        "description": "Understanding three-dimensional coordinate geometry; planes and lines in space.",
+        "id": "MT1200",
+        "symbol": "(x,y,z)"
+    },
+    {
+        "name": "Sets and Relations",
+        "description": "Basics of set theory; relations and their properties.",
+        "id": "MT1300",
+        "symbol": "x∈A"
+    },
+    {
+        "name": "Types of Functions",
+        "description": "Understanding different types of functions; domain and range.",
+        "id": "MT1310",
+        "symbol": "f(f(x))=1"
+    },
+    {
+        "name": "Function Operations",
+        "description": "Operations with functions including addition, composition.",
+        "id": "MT1320",
+        "symbol": "f ∘ g"
+    },
+    {
+        "name": "Inverse Functions",
+        "description": "Finding inverse functions; properties and applications.",
+        "id": "MT1330",
+        "symbol": "f⁻¹(x)"
+    },
+    {
+        "name": "Limits and Continuity",
+        "description": "Understanding limits and continuity of functions.",
+        "id": "MT1400",
+        "symbol": "limₓ→ₐ"
+    },
+    {
+        "name": "Derivatives",
+        "description": "Differentiation techniques; derivatives of functions.",
+        "id": "MT1410",
+        "symbol": "f'(x)"
+    },
+    {
+        "name": "Continuity and Differentiability",
+        "description": "Analyzing functions for continuity and differentiability.",
+        "id": "MT1420",
+        "symbol": "C¹"
+    },
+    {
+        "name": "Applications of Derivatives",
+        "description": "Using derivatives for finding maxima and minima; rates of change.",
+        "id": "MT1430",
+        "symbol": "f''(x)"
+    },
+    {
+        "name": "Integrals",
+        "description": "Introduction to integration; techniques and applications.",
+        "id": "MT1440",
+        "symbol": "∫f(x)dx"
+    },
+    {
+        "name": "Differential Equations",
+        "description": "Solving basic differential equations; initial value problems.",
+        "id": "MT1450",
+        "symbol": "dy/dx"
+    },
+    {
+        "name": "Applications of Linear Programming",
+        "description": "Applying linear programming techniques to solve real-world optimization problems.",
+        "id": "MT1530",
+        "symbol": "ax+by"
+    },
+    {
+        "name": "Probability",
+        "description": "Fundamentals of probability; calculating probabilities; conditional probability.",
+        "id": "MT1600",
+        "symbol": "P(A∩B)"
+    },
+    {
+        "name": "Statistics",
+        "description": "Descriptive statistics; measures of central tendency and dispersion; data analysis.",
+        "id": "MT1610",
+        "symbol": "μ,σ,x̄"
+    },
+    {
+        "name": "Data Interpretation",
+        "description": "Interpreting data from charts, graphs, and tables; making inferences based on data.",
+        "id": "MT1620",
+        "symbol": "_|l_|l_"
+    }
+]

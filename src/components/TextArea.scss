@@ -1,0 +1,22 @@
+@import "../constants/styleConstants.scss";
+
+.text-area {
+    padding: 8px;
+    resize: none;
+    box-sizing: border-box;
+    width: 100%;
+
+    border: $border-normal;
+    border-radius: 8px;
+
+    line-height: 1.2;
+    font-family: inherit;
+    font-size: 1rem;
+
+    transition: border-color 0.3s;
+
+    &:focus {
+        border-color: $border-focus-color;
+        outline: none;
+    }
+}

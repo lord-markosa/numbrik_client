@@ -1,0 +1,110 @@
+@import "../../constants/styleConstants.scss";
+
+.create-question-page {
+    padding: 8px;
+
+    .header {
+        display: flex;
+        align-items: center;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 4px;
+
+        border-bottom: $border-normal;
+
+        .back-button {
+            @include centered;
+
+            color: $black-200;
+            font-size: 1.4rem;
+        }
+
+        .title {
+            margin: 0 auto;
+            font-weight: 600;
+        }
+    }
+
+    .search-bar {
+        margin-top: 4px;
+    }
+
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+
+        .tag {
+            @include centered;
+            padding: 8px;
+            margin: 4px 4px 0 0;
+
+            border-radius: 4px;
+            border: 1px solid $grey-200;
+        }
+
+        .tag-button {
+            @include centered;
+
+            font-size: 1.2rem;
+        }
+
+        .add-tag-button {
+            @include centered;
+            margin: 4px 4px 0 0;
+            padding: 8px;
+
+            font-size: 1.2rem;
+        }
+
+        .tag-input {
+            margin: 0;
+            margin: 4px 4px 0 0;
+        }
+    }
+    .input-area {
+        margin-top: 4px;
+    }
+
+    .option-input {
+        display: flex;
+        align-items: center;
+
+        .correct-button {
+            @include centered;
+            margin-left: 8px;
+
+            font-size: 2rem;
+        }
+    }
+
+    .add-options-button {
+        @include centered;
+        margin: 8px 0;
+        padding: 8px;
+
+        font-size: 1.2rem;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+
+        .action-button {
+            margin-left: 0;
+        }
+    }
+
+    .spinner {
+        margin-left: 8px;
+    }
+
+    .error {
+        margin: 10px;
+
+        color: rgb(255, 124, 124);
+        font-size: 0.9rem;
+    }
+}

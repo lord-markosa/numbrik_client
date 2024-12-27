@@ -1,0 +1,28 @@
+@import "../constants/styleConstants.scss";
+
+.label {
+    margin: 4px 0 2px;
+    font-size: 0.8rem;
+}
+
+.input-box {
+    padding: 8px;
+    margin: 4px 0 8px;
+
+    font-size: 1rem;
+    font-family: inherit;
+
+    border: $border-normal;
+    border-radius: 4px;
+
+    transition: border-color 0.3s;
+
+    &:focus {
+        border-color: $border-focus-color;
+        outline: none;
+    }
+
+    &.input-error {
+        border-color: $error-color;
+    }
+}

@@ -1,0 +1,23 @@
+@import "../../constants/styleConstants.scss";
+
+.dialog-props {
+    @include centered;
+    flex-direction: column;
+    justify-content: center;
+
+    font-size: 1.05rem;
+
+    .dialog-message {
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    .button {
+        margin-bottom: 12px;
+        min-width: 220px;
+
+        &.second {
+            margin-bottom: 0;
+        }
+    }
+}

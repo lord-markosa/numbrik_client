@@ -1,0 +1,35 @@
+@import "../../constants/styleConstants.scss";
+
+.auth-page {
+    @include page-standard;
+    padding: 8rem 4rem 0 4rem;
+    text-align: center;
+    padding-top: 8rem;
+
+    .header-image {
+        margin-bottom: 20px;
+        height: 20rem;
+    }
+
+    .welcome-title {
+        @include title;
+        margin-bottom: 12px;
+    }
+
+    .user-sign-button {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-top: 8px;
+    }
+
+    .register-text {
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+
+    .error {
+        color: $error-color;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}

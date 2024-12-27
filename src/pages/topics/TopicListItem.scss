@@ -1,0 +1,65 @@
+@import "../../constants/styleConstants.scss";
+
+.topic-list-item {
+    @include centered;
+
+    justify-content: space-between;
+    padding: 12px 8px;
+    margin-bottom: 16px;
+
+    border: $border-normal;
+    box-shadow: 0 0 7px 4px rgba(73, 73, 73, 0.1);
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover,
+    &:active {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .left-section {
+        @include centered;
+        .symbol {
+            @include centered;
+            font-size: 1.1rem;
+            margin-right: 12px;
+            min-width: 4.2rem;
+            min-height: 4rem;
+
+            border-radius: 16px;
+
+            background-color: $theme-color-light;
+        }
+
+        .info {
+            .name {
+                font-size: 1.2rem;
+                margin-bottom: 4px;
+
+                // ellipsis with webkit line clamp
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .description {
+                @include subtitle;
+
+                // ellipsis with webkit line clamp
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

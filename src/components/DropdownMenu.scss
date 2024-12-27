@@ -1,0 +1,56 @@
+@import "../constants/styleConstants.scss";
+
+.dropdown-menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .menu-options {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 120px;
+        z-index: 1000;
+
+        margin: 0 4px;
+        padding: 4px 0;
+
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        border-radius: 4px;
+        border: $border-normal;
+
+        &.left {
+            top: 100%;
+            left: 0;
+            transform: translateX(-10%);
+        }
+
+        &.right {
+            top: 100%;
+            right: 0;
+            transform: translateX(10%);
+        }
+
+        &.center {
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .menu-option {
+            font-size: 0.8rem;
+            text-align: left;
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            background-color: white;
+
+            &:hover {
+                background-color: $hover-color;
+            }
+        }
+    }
+}

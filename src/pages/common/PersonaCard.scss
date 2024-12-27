@@ -1,0 +1,28 @@
+@import "../../constants/styleConstants.scss";
+
+.persona-dialog {
+    @include page-standard;
+    width: 80%;
+
+    .persona {
+        margin-bottom: 16px;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        .action-button {
+            padding-left: 8px;
+            padding-right: 8px;
+            margin: 0;
+        }
+    }
+
+    .error {
+        color: $error-color;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}

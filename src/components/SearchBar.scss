@@ -1,0 +1,51 @@
+@import "../constants/styleConstants.scss";
+
+.search-bar {
+    position: relative;
+    @include centered;
+
+    margin-bottom: 12px;
+    padding-right: 8px;
+
+    border: $border-normal;
+    border-radius: 8px;
+
+    .search-input {
+        width: 100%;
+        padding: 8px;
+        margin: 0;
+        border: none;
+        outline: none;
+    }
+
+    .search-icon {
+        font-size: 1.6rem;
+        color: $grey-500;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        z-index: 1000;
+        top: 112%;
+        left: 0;
+        right: 0;
+        overflow-y: auto;
+
+        background: white;
+
+        border: $border-normal;
+        border-radius: 4px;
+
+        max-height: 200px;
+
+        .dropdown-menu-item {
+            padding: 10px;
+            cursor: pointer;
+
+            &.highlighted,
+            &:hover {
+                background: $hover-color;
+            }
+        }
+    }
+}

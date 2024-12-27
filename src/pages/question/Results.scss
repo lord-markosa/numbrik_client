@@ -1,0 +1,57 @@
+@import "../../constants/styleConstants.scss";
+
+.results-container {
+    @include centered;
+    flex-direction: column;
+    height: 100vh;
+
+    .score-box {
+        @include centered;
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding: 40px;
+        height: 8rem;
+        width: 8rem;
+
+        border-radius: 50%;
+        border: 12px solid $theme-color-light;
+        font-family: $font-1;
+
+        background-color: $theme-color-dark;
+
+        color: white;
+
+        .label {
+            font-size: 1.6rem;
+        }
+        .score {
+            font-size: 3rem;
+        }
+    }
+
+    .congratulation {
+        color: $theme-color-dark;
+        text-align: center;
+
+        .label {
+            font-size: 2.5rem;
+        }
+        .message {
+            font-size: 1.4rem;
+            color: $grey-600;
+        }
+    }
+
+    .action-buttons {
+        @include centered;
+        flex-direction: column;
+
+        margin-top: 50px;
+
+        .action-button {
+            min-width: 150px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@import "../../constants/styleConstants.scss";
+
+.admin-home {
+    margin: 8px;
+
+    .user-ops,
+    .question-ops {
+        margin: 8px 0;
+        padding: 8px;
+
+        border-radius: 8px;
+        border: $border-normal;
+
+        .user-search-bar {
+            margin-top: 8px;
+        }
+
+        .action-button {
+            margin-left: 0;
+            margin-bottom: 8px;
+        }
+
+        .buttons-container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            margin: 8px 0;
+        }
+
+        .spinner {
+            margin: 0 0 8px 8px;
+            justify-content: flex-start;
+        }
+    }
+}
