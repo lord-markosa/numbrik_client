@@ -274,7 +274,7 @@ const CreateQuestion = () => {
                 name="solution"
                 value={inputs.solution}
                 onChange={inputChangeHandler}
-                minRows={2}
+                minRows={8}
             />
 
             {/* Answer */}
