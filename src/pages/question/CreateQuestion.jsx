@@ -1,151 +1,167 @@
 import React from "react";
+import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { IoAddOutline } from "react-icons/io5";
-import { IoCheckmarkCircleOutline } from "react-icons/io5";
-import { IoCloseCircleOutline } from "react-icons/io5";
-import { IoCheckmarkCircle, IoRemove } from "react-icons/io5";
 import { IoArrowBackOutline } from "react-icons/io5";
+import QuestionForm from "./QuestionForm";
 import Question from "./Question";
-import LoadingScreen from "../../components/LoadingScreen";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
-import TextArea from "../../components/TextArea";
+import useNavigateBack from "../../hooks/useNavigateBack";
 import topicsData from "../../constants/topics.json";
 import SearchBar from "../../components/SearchBar";
+import ConfirmationDialog from "../../components/ConfirmationDialog";
 import Spinner from "../../components/Spinner";
-import useNavigateBack from "../../hooks/useNavigateBack";
 import { useSearch } from "../../hooks/useSearch";
-import { createQuestion } from "../../service/adminServices";
+import { useDialog } from "../../hooks/useDialog";
 import { questionCreationStatus } from "../../selectors/adminSelectors";
+import { createQuestion, generateQuestion } from "../../service/adminServices";
 
 import "./CreateQuestion.scss";
+import TextArea from "../../components/TextArea";
 
 const CreateQuestion = () => {
-    const dispatch = useDispatch();
     const navigateBack = useNavigateBack("/");
+    const dispatch = useDispatch();
 
-    const [inputs, setInputs] = React.useState(defaultInputs);
-    const [tagInput, setTagInput] = React.useState("");
+    const [prompt, setPrompt] = React.useState("");
+    const [isGenerating, setIsGenerating] = React.useState(false);
+    const [questions, setQuestions] = React.useState([defaultInputs]);
+    const [idx, setIdx] = React.useState(0);
     const [error, setError] = React.useState("");
+
+    const { dialogProps, requestDialog } = useDialog();
 
     const { creating, creationFailed } = useSelector(questionCreationStatus);
 
-    const { items, searchQuery, reset, searchBarProps } = useSearch(topicsData);
+    const inputs = questions[idx];
 
-    // most general
-    const inputChangeHandler = (e) => {
-        const { name, value } = e.target;
-        setInputs((currentInputs) => ({
-            ...currentInputs,
-            [name]: value,
-        }));
+    const setInputs = (callback) => {
+        setQuestions(questions.map((q, i) => (i === idx ? callback(q) : q)));
     };
 
-    // topic handler
-    React.useEffect(() => {
-        if (items[0]?.id) {
-            setInputs((currentInputs) => ({
-                ...currentInputs,
-                topicId: items[0]?.id,
-            }));
-        }
-    }, [searchQuery, items[0]?.id]);
+    const { searchBarProps } = useSearch(topicsData, {
+        onSelectCallback: (item) => {
+            setQuestions(questions.map((q) => ({ ...q, topicId: item.id })));
+        },
+    });
 
-    // options handler
-    const optionChangeHandler = (index, value) => {
-        setInputs((currentInputs) => {
-            const newOptions = [...currentInputs.options];
-            newOptions[index] = value;
-            return { ...currentInputs, options: newOptions };
-        });
-    };
-
-    const addOptionHandler = () => {
-        setInputs((currentInputs) => ({
-            ...currentInputs,
-            options: [...currentInputs.options, ""],
-        }));
-    };
-
-    const removeOptionHandler = () => {
-        setInputs((currentInputs) => {
-            const newOptions = [...currentInputs.options];
-            newOptions.pop();
-            return { ...currentInputs, options: newOptions };
-        });
-    };
-
-    const correctOptionChangeHandler = (index) => {
-        setInputs((currentInputs) => {
-            const newCorrectOption = currentInputs.correctOption.includes(index)
-                ? currentInputs.correctOption.filter((i) => i !== index)
-                : [...currentInputs.correctOption, index];
-            return {
-                ...currentInputs,
-                correctOption: newCorrectOption,
-                type:
-                    newCorrectOption.length > 1
-                        ? "multiCorrect"
-                        : "singleCorrect",
-            };
-        });
-    };
-
-    // tags handler
-    const addTag = () => {
-        if (tagInput.trim()) {
-            setInputs((currentInputs) => ({
-                ...currentInputs,
-                tags: [...currentInputs.tags, tagInput.trim()],
-            }));
-            setTagInput("");
-        }
-    };
-
-    const removeTag = (tagToRemove) => {
-        setInputs((currentInputs) => ({
-            ...currentInputs,
-            tags: currentInputs.tags.filter((tag) => tag !== tagToRemove),
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const validateInputs = () => {
         if (!inputs.topicId) {
             setError("Topic is required.");
-            return;
+            return 0;
         }
 
         if (!inputs.problemStatement.trim()) {
             setError("Problem statement is required.");
-            return;
+            return 0;
         }
 
         if (inputs.options.length < 2) {
             setError("At least two options are required.");
-            return;
+            return 0;
         }
 
         if (inputs.correctOption.length === 0) {
             setError("At least one correct option is required.");
-            return;
+            return 0;
         }
 
-        if (inputs.lod < 1 || inputs.lod > 5) {
-            setError("Level of difficulty must be between 1 and 5.");
+        return 1;
+    };
+
+    const handleSubmit = async (e) => {
+        // this error has to be logged while clicking on next button
+        e.preventDefault();
+
+        if (!validateInputs()) {
             return;
         }
 
         setError(""); // Clear any previous errors
-        console.log(inputs);
-        await dispatch(createQuestion(inputs));
+        console.log(questions);
+
+        const response = await requestDialog(
+            "Are you sure to create these questions?"
+        );
+
+        if (response !== "primary") {
+            return;
+        }
+
+        await dispatch(createQuestion(questions));
 
         if (!creationFailed) {
-            setInputs(defaultInputs);
-            reset();
+            navigateBack();
         }
     };
+
+    const handleNext = () => {
+        if (!validateInputs()) {
+            return;
+        }
+
+        setError(""); // Clear any previous errors
+        setIdx(idx + 1);
+    };
+
+    const addQuestion = () => {
+        if (!validateInputs()) {
+            return;
+        }
+        setQuestions([
+            ...questions,
+            { ...defaultInputs, topicId: questions[0].topicId },
+        ]);
+        setIdx(idx + 1);
+    };
+
+    const removeQuestion = async () => {
+        const response = await requestDialog(
+            "Are you sure to delete this question?"
+        );
+        if (response !== "primary" || questions.length === 1) {
+            return;
+        }
+        if (idx === questions.length - 1) {
+            setIdx(idx - 1);
+        }
+        setQuestions((q) => q.filter((_, i) => i !== idx));
+    };
+
+    const onGenerateQuestion = async () => {
+        if (!prompt.trim()) {
+            return;
+        }
+
+        const confirmationRes = await requestDialog(
+            "Are you sure to generate questions?"
+        );
+
+        if (confirmationRes !== "primary") {
+            return;
+        }
+
+        setIsGenerating(true);
+
+        const response = await dispatch(generateQuestion(prompt));
+
+        if (response.payload.questions) {
+            setQuestions(
+                response.payload.questions.map((q) => ({
+                    ...defaultInputs,
+                    ...q,
+                }))
+            );
+        }
+
+        setIsGenerating(false);
+    };
+
+    const handlePrev = () => setIdx(idx - 1);
+
+    const buttonContainerClasses = classNames(
+        "buttons-container",
+        idx === 0 && "first"
+    );
 
     return (
         <div className="create-question-page">
@@ -164,135 +180,14 @@ const CreateQuestion = () => {
             <div className="label">Select Topic</div>
             <SearchBar {...searchBarProps} className="search-bar" />
 
-            {/* Tags */}
-            <div className="label">Tags</div>
-            <div className="tags-container">
-                {inputs.tags.map((tag, index) => (
-                    <div key={index} className="tag">
-                        {tag}
-                        <Button
-                            onClick={() => removeTag(tag)}
-                            type="transparent"
-                            className="tag-button"
-                        >
-                            <IoCloseCircleOutline />
-                        </Button>
-                    </div>
-                ))}
-                <Input
-                    type="text"
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    placeholder="Tag Name"
-                    className="tag-input"
-                />
-                <Button onClick={addTag} className={"add-tag-button"}>
-                    <IoAddOutline />
-                </Button>
-            </div>
-            <div className="label">Level of Difficulty (1-5)</div>
-
-            {/* Level of Difficulty */}
-            <Input
-                type="number"
-                name="lod"
-                value={inputs.lod}
-                onChange={inputChangeHandler}
-                min="1"
-                max="5"
-            />
-            <div className="label">Problem Statement</div>
-
-            {/* Problem Statement */}
-            <TextArea
-                className="input-area"
-                name="problemStatement"
-                placeholder="Enter the problem statement here"
-                value={inputs.problemStatement}
-                onChange={inputChangeHandler}
-                minRows={5}
-            />
-
-            {/* Options */}
-            <div className="label">Options</div>
-            {inputs.options.map((option, index) => (
-                <div key={index} className="option-input">
-                    <TextArea
-                        placeholder={`Option ${index + 1}`}
-                        className="input-area"
-                        value={option.value}
-                        onChange={(e) =>
-                            optionChangeHandler(index, e.target.value)
-                        }
-                    />
-                    <Button
-                        onClick={() => correctOptionChangeHandler(index)}
-                        type="transparent"
-                        className="correct-button"
-                    >
-                        {inputs.correctOption?.includes(index) ? (
-                            <IoCheckmarkCircle />
-                        ) : (
-                            <IoCheckmarkCircleOutline />
-                        )}
-                    </Button>
-                </div>
-            ))}
-
-            <div className="buttons-container">
-                <Button
-                    className={"add-options-button"}
-                    onClick={addOptionHandler}
-                >
-                    <IoAddOutline />
-                </Button>
-                {inputs.options.length > 0 && (
-                    <Button
-                        className={"add-options-button"}
-                        onClick={removeOptionHandler}
-                    >
-                        <IoRemove />
-                    </Button>
-                )}
-            </div>
-
-            {/* Hint */}
-            <div className="label">Hint</div>
-            <TextArea
-                placeholder="Enter the hint here"
-                className="input-area"
-                name="hint"
-                value={inputs.hint}
-                onChange={inputChangeHandler}
-            />
-
-            {/* Solution */}
-            <div className="label">Solution</div>
-            <TextArea
-                placeholder="Enter the solution here"
-                className="input-area"
-                name="solution"
-                value={inputs.solution}
-                onChange={inputChangeHandler}
-                minRows={8}
-            />
-
-            {/* Answer */}
-            <div className="label">Answer</div>
-            <TextArea
-                placeholder="Enter the answer here (if applicable)"
-                className="input-area"
-                name="answer"
-                value={inputs.answer}
-                onChange={inputChangeHandler}
-            />
-
+            <QuestionForm inputs={inputs} setInputs={setInputs} />
             {error && <div className="error">{error}</div>}
+
             {inputs.problemStatement && (
                 <Question
-                    idx={0}
-                    totalQuestions={1}
-                    key={"0"}
+                    idx={idx}
+                    totalQuestions={questions.length}
+                    key={idx}
                     question={inputs}
                     selectedAnswers={[]}
                     onSelectAnswer={() => {}}
@@ -302,9 +197,38 @@ const CreateQuestion = () => {
                 />
             )}
 
-            {/* Submit Button */}
-            <div className="buttons-container">
-                {!creating ? (
+            {/* Add new question and remove buttons */}
+            <div className={"buttons-container"}>
+                <Button
+                    onClick={removeQuestion}
+                    className="action-button"
+                    type="transparent"
+                    disabled={questions.length === 1}
+                >
+                    Remove
+                </Button>
+                <Button
+                    onClick={addQuestion}
+                    className="action-button"
+                    type="transparent"
+                    disabled={idx !== questions.length - 1}
+                >
+                    Add
+                </Button>
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className={buttonContainerClasses}>
+                {idx > 0 && (
+                    <Button onClick={handlePrev} className="action-button">
+                        Prev
+                    </Button>
+                )}
+                {idx < questions.length - 1 ? (
+                    <Button onClick={handleNext} className="action-button">
+                        Next
+                    </Button>
+                ) : !creating ? (
                     <Button onClick={handleSubmit} className="action-button">
                         Create
                     </Button>
@@ -312,6 +236,32 @@ const CreateQuestion = () => {
                     <Spinner small={true} className="spinner" />
                 )}
             </div>
+
+            <div className="prompt-section">
+                <div className="label">Generate questions</div>
+                <TextArea
+                    placeholder="Prompt"
+                    className="input-area"
+                    name="prompt"
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                    minRows={4}
+                />
+                <div className="buttons-container">
+                    {isGenerating ? (
+                        <Spinner small={true} className="spinner" />
+                    ) : (
+                        <Button
+                            onClick={onGenerateQuestion}
+                            className="action-button"
+                        >
+                            Generate
+                        </Button>
+                    )}
+                </div>
+            </div>
+
+            <ConfirmationDialog {...dialogProps} />
         </div>
     );
 };
@@ -322,7 +272,7 @@ const defaultInputs = {
     lod: 1,
     type: "singleCorrect",
     problemStatement: "",
-    options: [],
+    options: ["", ""],
     correctOption: [],
     hint: "",
     solution: "",

@@ -32,12 +32,24 @@ export const fetchQuestionsForAdmin = createAsyncThunk(
 
 export const createQuestion = createAsyncThunk(
     "admin/createQuestion",
-    async (question, thunkApi) =>
+    async (questions, thunkApi) =>
         makeRequest(
             `/api/admin/create-question`,
             "post",
             thunkApi,
-            question,
+            { questions },
+            getAdminHeader()
+        )
+);
+
+export const generateQuestion = createAsyncThunk(
+    "admin/generateQuestion",
+    async (prompt, thunkApi) =>
+        makeRequest(
+            `/api/admin/generate-questions`,
+            "post",
+            thunkApi,
+            { prompt },
             getAdminHeader()
         )
 );

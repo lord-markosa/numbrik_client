@@ -18,7 +18,7 @@ export const useSearch = (rawItems, props) => {
     return {
         items,
         searchQuery,
-        reset: () => setSearchQuery(""),
+        setSearchQuery,
         searchBarProps: {
             items,
             searchQuery,

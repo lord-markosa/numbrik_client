@@ -1,5 +1,5 @@
 // TIME CONSTANTS
-export const ADMIN_TOKEN_EXPIRY_TIME = 24 * 60 * 60 * 1000;
+export const ADMIN_TOKEN_EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000;
 
 // IDB CONSTANTS
 export const QUESTION_IDB = "question-db";

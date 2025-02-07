@@ -11,6 +11,7 @@ const SearchBar = ({
     className,
     placeholder,
     shouldHideMenu = false,
+    onSelectCallback = () => {},
 }) => {
     const [highlightedIndex, setHighlightedIndex] = React.useState(-1);
     const [isFocused, setIsFocused] = React.useState(false);
@@ -34,6 +35,7 @@ const SearchBar = ({
             );
         } else if (e.key === "Enter" && highlightedIndex >= 0) {
             setSearchQuery(items[highlightedIndex].name);
+            onSelectCallback(items[highlightedIndex]);
         }
     };
 
@@ -46,6 +48,7 @@ const SearchBar = ({
 
     const onItemClick = (item) => {
         setSearchQuery(item.name);
+        onSelectCallback(item);
     };
 
     return (
