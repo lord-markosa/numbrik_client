@@ -30,8 +30,9 @@ $font-3: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
 // specifics
 // borders
-$border-normal: 1px solid $grey-100;
-$border-dark: $grey-200;
+$border-light: 1px solid $grey-100;
+$border-normal: 1px solid $grey-200;
+$border-dark: 1px solid $grey-300;
 $border-focus-color: $theme-color-dark;
 $border-error: $error-color;
 

@@ -11,7 +11,7 @@
         margin-bottom: 20px;
         padding-bottom: 4px;
 
-        border-bottom: $border-normal;
+        border-bottom: $border-light;
 
         .back-button {
             @include centered;
@@ -26,74 +26,17 @@
         }
     }
 
-    .search-bar {
-        margin-top: 4px;
-    }
-
-    .tags-container {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 12px;
-
-        .tag {
-            @include centered;
-            padding: 8px;
-            margin: 4px 4px 0 0;
-
-            border-radius: 4px;
-            border: 1px solid $grey-200;
-        }
-
-        .tag-button {
-            @include centered;
-
-            font-size: 1.2rem;
-        }
-
-        .add-tag-button {
-            @include centered;
-            margin: 4px 4px 0 0;
-            padding: 8px;
-
-            font-size: 1.2rem;
-        }
-
-        .tag-input {
-            margin: 0;
-            margin: 4px 4px 0 0;
-        }
-    }
-    .input-area {
-        margin-top: 4px;
-    }
-
-    .option-input {
-        display: flex;
-        align-items: center;
-
-        .correct-button {
-            @include centered;
-            margin-left: 8px;
-
-            font-size: 2rem;
-        }
-    }
-
-    .add-options-button {
-        @include centered;
-        margin: 8px 0;
-        padding: 8px;
-
-        font-size: 1.2rem;
-    }
-
     .buttons-container {
         display: flex;
         justify-content: space-between;
-        margin-top: 12px;
+        margin-top: 16px;
 
         .action-button {
-            margin-left: 0;
+            margin: 0;
+        }
+
+        &.first {
+            justify-content: flex-end;
         }
     }
 
@@ -106,5 +49,12 @@
 
         color: rgb(255, 124, 124);
         font-size: 0.9rem;
+    }
+
+    .prompt-section {
+        margin: 12px 0;
+        border-bottom: $border-light;
+        border-top: $border-light;
+        padding: 8px 0;
     }
 }
